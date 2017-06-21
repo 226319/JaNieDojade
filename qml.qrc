@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>qml/ExceptionWindow.qml</file>
+        <file>qml/StationInfo.qml</file>
+        <file>qml/SearchPanel.qml</file>
+        <file>qml/RouteDisplay.qml</file>
+        <file>svg/arrow.svg</file>
+        <file>svg/bus.svg</file>
+        <file>svg/tram.svg</file>
+        <file>qml/VehicleLineInfo.qml</file>
+        <file>qml/pathway.qml</file>
+        <file>qml/Station.qml</file>
+        <file>qml/WarnWindow/ContentItem.qml</file>
+        <file>qml/WarnWindow/Background.qml</file>
+        <file>qml/main.qml</file>
+        <file>JSFunc/ObjectCreator.js</file>
+        <file>JSFunc/functions.js</file>
+    </qresource>
+</RCC>
