@@ -76,6 +76,7 @@ GroupBox {
                 routeStops.get(0).obj.destroy();
                 routeStops.remove(0);
             }
+            routeInfo.visible = false;
         }
 
 }

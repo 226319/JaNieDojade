@@ -32,7 +32,7 @@ ApplicationWindow {
         searchButton.onClicked:   {
 
             if ( startPoint.currentIndex != endPoint.currentIndex ) {
-
+                routeInfo.visible = false;
                 var itm = route.Find(startPoint.currentText, endPoint.currentText);
 
                 if (!itm) {
@@ -54,62 +54,6 @@ ApplicationWindow {
        id:routeInfo
 
     }
-
-/*
-    Rectangle {
-
-        id: routeDisplay
-
-        color: "#0b75c6"
-        width: 1120;
-        height: 140;
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 5
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        ListModel {
-            id:routeStops
-
-            function itemAppend(obj, source) {
-                routeStops.append({ "obj": obj, "source": source } )
-            }
-        }
-
-        SwipeView {
-            id: routeInfo
-            anchors.fill: parent
-
-        }
-
-        function addVehicle(line,direction,list) {
-
-            ObjectCreator.CreateObject("qrc:/qml/VehicleLineInfo.qml", routeInfo, routeStops.itemAppend);
-            var itm = routeStops.get(routeStops.count-1).obj;
-            itm.lineText = line;
-            itm.directionText = direction
-            itm.stationList = list;
-        }
-
-        function addTram(line, direction,list) {
-            routeDisplay.addVehicle(line,direction,list)
-            routeStops.get(routeStops.count-1).obj.vehicleImage = "qrc:/svg/tram.svg";
-
-        }
-
-        function addBus(line, direction,list) {
-            routeDisplay.addVehicle(line,direction,list)
-            routeStops.get(routeStops.count-1).obj.vehicleImage = "qrc:/svg/bus.svg";
-
-        }
-
-        function addPathway(name) {
-            ObjectCreator.CreateObject("qrc:/qml/pathway.qml",routeInfo,routeStops.itemAppend)
-            routeStops.get(routeStops.count-1).obj.stationName = name;
-
-        }
-
-    }
-    */
 
    ExceptionWindow {
        id: warnWindow

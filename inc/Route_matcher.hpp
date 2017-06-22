@@ -43,6 +43,90 @@ public:
     return routes;
   }
 
+
+  std::vector<Route> match_route(const std::vector<std::string>& path){
+    std::vector<Route> result { };
+    auto current_station = path.begin();
+    for (auto i=routes.begin();i<routes.end();i++){
+      for(auto j=i->getStations().begin();j<i->getStations().end();j++){
+        if(j->first==*current_station){
+          Route route(i->getName(),i->getDirection(),i->getType(),i->getVariation());
+          while(j->first==*current_station){
+            route.addStop(j->first,j->second);
+            j++;
+            current_station++;
+          }
+          result.push_back(route);
+          break;
+        }
+      }
+      if(current_station==path.end()){
+        break;
+      }
+    }
+    return result;
+  }
+
+  /*
+  std::vector<Route> match_route(const std::vector<std::string>& path){
+     std::vector<Route> result { };
+     std::multimap<size_t, Route> q;
+     auto current_station = path.begin();
+
+     for (auto i = routes.begin(); i < routes.end(); i++){
+       for (auto&k : path){
+         size_t match = 0;
+         for (auto&g : i->getStations()){
+           if (g.first == k){
+             match++;
+           }
+         }
+         if (match > 1){
+           q.insert( { match, *i });
+         }
+       }
+     }
+
+     for (size_t i = path.size(); i > 0; i--){
+       auto range = q.equal_range(i);
+       for (auto j = range.first; j != range.second; j++){
+         for (auto k = j->second.getStations().begin();
+             k < j->second.getStations().end(); k++){
+           if (k->first == *current_station){
+             Route route(j->second.getName(), j->second.getDirection(),
+                 j->second.getType(), j->second.getVariation());
+             while ((k->first == *current_station)){
+               route.addStop(k->first, k->second);
+               if (current_station != path.end()
+                   && k != j->second.getStations().end()){
+                 current_station++;
+                 k++;
+               } else{
+                 result.push_back(route);
+                 return result;
+               }
+             }
+             if (route.getStations().size() > 1){
+               result.push_back(route);
+               i = path.size();
+
+             }
+
+             if (current_station == path.end()){
+               return result;
+             }
+
+             break;
+           }
+         }
+       }
+     }
+
+     return result;
+   }
+
+
+
   std::vector<Route> match_route(const std::vector<std::string>& path){
       std::vector<Route> result { };
       std::multimap<size_t, Route> q;
@@ -113,6 +197,7 @@ public:
 
       return result;
     }
+*/
   ~Route_matcher(){
   }
   ;
