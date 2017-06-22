@@ -105,7 +105,7 @@ QString Fascade_graph::getWaypointsCoords(std::vector<Route>& route){
     else {
          QString QStr_Waypts("var waypts = [ ");
 
-         for( unsigned int Idx = 1; Idx < route.size()-1; ++Idx ) {
+         for( unsigned int Idx = 1; Idx < stationList.size()-1; ++Idx ) {
                      QStr_Waypts.append("{location:");
                      QStr_Waypts.append( getCoords( graph.find_Vertex( stationList[Idx] ).getCords() ));
                      QStr_Waypts.append(", stopover:true},");

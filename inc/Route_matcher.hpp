@@ -44,28 +44,75 @@ public:
   }
 
   std::vector<Route> match_route(const std::vector<std::string>& path){
-    std::vector<Route> result { };
-    auto current_station = path.begin();
-    for (auto i=routes.begin();i<routes.end();i++){
-      for(auto j=i->getStations().begin();j<i->getStations().end();j++){
-        if(j->first==*current_station){
-          Route route(i->getName(),i->getDirection(),i->getType(),i->getVariation());
-          while(j->first==*current_station){
-            route.addStop(j->first,j->second);
-            j++;
-            current_station++;
-          }
-          result.push_back(route);
-          break;
-        }
-      }
-      if(current_station==path.end()){
-        break;
-      }
-    }
-    return result;
-  }
+      std::vector<Route> result { };
+      std::multimap<size_t, Route> q;
 
+      for (auto i = routes.begin(); i < routes.end(); i++){
+        for (auto j = i->getStations().begin(); j < i->getStations().end(); j++){
+          Route route(i->getName(), i->getDirection(), i->getType(),
+              i->getVariation());
+          size_t match = 0;
+          if (j->first == *path.begin()){
+            for (auto&k : path){
+              if (j->first == k){
+                match++;
+                route.addStop(j->first, j->second);
+              }
+              if (j < i->getStations().end()){
+                j++;
+              }
+            }
+            if (match == path.size()){
+              result.push_back(route);
+              return result;
+            }
+            q.insert( { match, *i });
+            break;
+          }
+
+        }
+
+      }
+
+      auto current_station = path.begin();
+      for (size_t i = path.size(); i > 0; i--){
+        auto range = q.equal_range(i);
+          for (auto j = range.first; j != range.second; j++){
+            for (auto k = j->second.getStations().begin();
+                k < j->second.getStations().end(); k++){
+              if (k->first == *current_station){
+                Route route(j->second.getName(), j->second.getDirection(),
+                    j->second.getType(), j->second.getVariation());
+
+                while ((k->first == *current_station)){
+                  route.addStop(k->first, k->second);
+                  k++;
+                  //std::cout << *current_station <<" "<<i<< std::endl;
+                  if (current_station < path.end() - 1){
+                    current_station++;
+                  } else{
+                    result.push_back(route);
+                    return result;
+                  }
+                }
+                if (route.getStations().size() > 1){
+                  result.push_back(route);
+                  i = path.size();
+                } else if (current_station == path.end()){
+                  return result;
+                }
+                if (current_station != path.begin()){
+                  current_station--;
+                }
+
+                break;
+              }
+            }
+          }
+        }
+
+      return result;
+    }
   ~Route_matcher(){
   }
   ;

@@ -1,6 +1,6 @@
 QT += qml quick webview widgets
 
-CONFIG += c++11 -I inc
+CONFIG += c++14 -I inc -O3
 
 SOURCES += \
     src/Astar.cpp \
