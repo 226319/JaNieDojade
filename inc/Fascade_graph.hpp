@@ -74,6 +74,10 @@ public:
 
   Q_INVOKABLE QVariantList Find(QString, QString );
 
+  ~Fascade_graph() {
+      JSVars();
+  }
+
 
 signals:
   void exceptionChanged();
@@ -87,6 +91,18 @@ private:
   QString getWaypointsCoords(std::vector<Route>& route);
   QString getCoords(const std::pair<double,double>& latlng);
   std::vector<std::string> getStationNameList(std::vector<Route>& route);
+  void JSVars() {
+      QFile File(QString("js/Waypoints.js"));
+      File.open(QIODevice::WriteOnly);
+      QTextStream OutStream(&File);
+
+      OutStream << "var start = false;\n";
+      OutStream << "var waypts = false;\n";
+      OutStream << "var end = false;\n";
+
+
+      File.close();
+  }
 
 
 
