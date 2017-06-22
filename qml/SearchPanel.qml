@@ -36,7 +36,7 @@ GroupBox {
                textRole: "stationName"
                editable: true
                focus: true
-               model: stationlist
+               model: stationList
                currentIndex: -1
                onAccepted: {
                    endPoint.focus = true
@@ -60,7 +60,7 @@ GroupBox {
                height: 40
                textRole: "stationName"
                editable: true
-               model: stationlist
+               model: stationList
                currentIndex: -1
                onAccepted: {
                    searchButton.clicked();

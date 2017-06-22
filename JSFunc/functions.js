@@ -1,13 +1,11 @@
 function prepareDisplayInfo(itm,routeInfo) {
 
-    if (routeInfo.count > 0) {
         routeInfo.clearList();
-    }
 
     for ( var idx = 0; idx < itm.length ; ++idx) {
 
         if (idx > 0 ){
-            routeInfo.addPathway(itm[idx].stationList[0]);
+            routeInfo.addPathway(itm[idx-1].stationList[ itm[idx-1].stationList.length -1 ] );
         }
 
         if ( itm[idx].vehicleType === 'T' ) {

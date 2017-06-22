@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>qml/ExceptionWindow.qml</file>
         <file>qml/StationInfo.qml</file>

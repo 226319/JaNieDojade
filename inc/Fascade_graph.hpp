@@ -26,6 +26,8 @@
 #include "Astar.hpp"
 #include "QRoute.h"
 #include <QObject>
+#include <QTextStream>
+#include <QFile>
 #include <QMessageBox>
 
 //if using fascade, remember to catch exceptions!
@@ -72,12 +74,20 @@ public:
 
   Q_INVOKABLE QVariantList Find(QString, QString );
 
+
 signals:
   void exceptionChanged();
 
 private:
 
   QVariantList toQRouteList( std::vector<Route> );
+  void Export(std::vector<Route> &);
+  QString getDestinationCoords(std::vector<Route>& );
+  QString getOriginCoords(std::vector<Route>&);
+  QString getWaypointsCoords(std::vector<Route>& route);
+  QString getCoords(const std::pair<double,double>& latlng);
+  std::vector<std::string> getStationNameList(std::vector<Route>& route);
+
 
 
 

@@ -3,7 +3,7 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtWebView 1.1
 import QtPositioning 5.5
-import test 1.0
+import App 1.0
 import "qrc:/JSFunc/functions.js" as Funct
 
 
@@ -11,8 +11,8 @@ import "qrc:/JSFunc/functions.js" as Funct
 ApplicationWindow {
     id: mainApp
     visible: true
-    width: 1280
-    height: 760
+    width: 1400
+    height: 900
     title: qsTr("APPLab8")
 
     WebView {
@@ -32,7 +32,7 @@ ApplicationWindow {
 
             if ( startPoint.currentIndex != endPoint.currentIndex ) {
 
-                var itm = route.Find(startPoint.currentText, startPoint.currentText);
+                var itm = route.Find(startPoint.currentText, endPoint.currentText);
 
                 if (!itm) {
                     warnWindow.warn(route.exception);
@@ -47,19 +47,10 @@ ApplicationWindow {
     }
 
 
-    RouteDisplay { id:routeInfo
-        x: (mainApp.width - width)/2
-        y: (mainApp.height - height)/2
+   RouteDisplay {
+       id:routeInfo
+
     }
-
-
-    ListModel {
-        id: stationlist;
-
-        ListElement { stationName: "pl.Bema"; stationID: 4 }
-        ListElement { stationName: "pl.Grunwaldzki"; stationID: 5 }
-    }
-
 
 
    ExceptionWindow {
@@ -70,6 +61,9 @@ ApplicationWindow {
    }
 
     StationInfo { id:stationInfo }
+
+
+
 
 
 

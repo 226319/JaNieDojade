@@ -4,14 +4,14 @@ Item {
 
     property alias stationName: stationName.text
 
-    width: 110
-    height: 110
+    width: 145
+    height: 145
     anchors.verticalCenter: parent.verticalCenter
 
     Image {
-        width: 40
-        height: 40
-        anchors.bottomMargin: 4
+        width: 55
+        height: 55
+        anchors.bottomMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         source: "qrc:/svg/arrow.svg"
@@ -21,10 +21,10 @@ Item {
     Item {
 
         id: directionInfo
-        height:17
-        width:100
+        height:20
+        width:135
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 4
+        anchors.bottomMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
 
         Rectangle {
@@ -43,7 +43,7 @@ Item {
             text: "StationName"
             color: "black"
             font.bold: true
-            font.pixelSize: 9
+            font.pixelSize: 7
 
         }
     }

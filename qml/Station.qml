@@ -22,7 +22,8 @@ Rectangle {
         text: "StationName"
         color: "black"
         font.bold: true
-        font.pixelSize: 13
+        font.pixelSize: 12
+        wrapMode: Text.Wrap
 
     }
 }

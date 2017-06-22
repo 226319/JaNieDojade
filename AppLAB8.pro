@@ -50,10 +50,25 @@ HEADERS += \
     inc/Route_matcher.hpp \
     inc/Route.hpp \
     inc/Vertex.hpp \
-    inc/QRoute.h
+    inc/QRoute.h \
+    inc/Station.h
 
 DISTFILES += \
     js/EditMapScripts.js \
     js/Waypoints.js \
-    html/Map.html
+    html/Map.html \
+    html/icon/icon.png \
+    Datafiles/GTFS/vehicle_types.txt \
+    Datafiles/GTFS/vehicle_types.txt \
+    Datafiles/GTFS/variants.txt \
+    Datafiles/GTFS/trips.txt \
+    Datafiles/GTFS/stops.txt \
+    Datafiles/GTFS/stop_times.txt \
+    Datafiles/GTFS/routes.txt \
+    Datafiles/GTFS/route_types.txt \
+    Datafiles/GTFS/feed_info.txt \
+    Datafiles/GTFS/control_stops.txt \
+    Datafiles/GTFS/calendar.txt \
+    Datafiles/GTFS/calendar_dates.txt \
+    Datafiles/GTFS/agency.txt
 

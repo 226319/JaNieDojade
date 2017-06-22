@@ -12,8 +12,8 @@ Item {
     property var stationList
     property var clickFlag
 
-    width:  110
-    height: 110
+    width:  145
+    height: 145
     anchors.verticalCenter: parent.verticalCenter
 
     signal clicked
@@ -30,7 +30,7 @@ Item {
         height:20
         width:60
         anchors.top: parent.top
-        anchors.topMargin: 4
+        anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
 
         color: "white"
@@ -47,16 +47,18 @@ Item {
             color: "black"
             font.bold: true
             font.pixelSize: 15
+            wrapMode: Text.Wrap
+
 
         }
     }
 
     Image {
         id: vehicleImage
-        width: 55
-        height: 55
+        width: 60
+        height: 60
         anchors.top: lineInfo.bottom
-        anchors.topMargin: 4
+        anchors.topMargin: 15
         anchors.horizontalCenter: parent.horizontalCenter
         source: ""
 
@@ -65,10 +67,10 @@ Item {
 
         Rectangle {
             id: directionInfo
-            height:17
-            width:100
+            height:20
+            width:135
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 4
+            anchors.bottomMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
             color: "white"
             radius: 4
@@ -83,7 +85,8 @@ Item {
             text: "StationName"
             color: "black"
             font.bold: true
-            font.pixelSize: 9
+            font.pixelSize: 7
+            wrapMode: Text.Wrap
 
         }
     }
